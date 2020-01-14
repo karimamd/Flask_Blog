@@ -32,3 +32,23 @@ so we use templates and create a templates folder to put them in it, templates a
 * can use for loops bu open blocks and close by endfor blocks
 
 * blocks are between 2 curly braces {% for post in posts%} while variables are in four {{post.title}} and we can use dot operator inside to access object attributes
+
+* can use if conditionals in Jinja in HTML so that we base condition off of passed variables
+{% if variable_name %} -> means if variable has a value i.e. passed
+
+* can use template inheritance in Jinja to avoid repeating html code between multiple files
+
+We put all common code between all files in a template file lets call it layout.html and put blocks in it in places of different code
+{% block block_name%} {% endblock block_name%}
+
+no need to write block_name in endblock but this is cleaner
+
+In shared files add {% extends "layout.html" %} and then define blocks with the same name of layout to replace them
+
+* there is a flask extension to bootstrap called flask bootstrap, but using normal bootstrap may be more flexible
+
+* in order to start using bootstrap we copied meta tags in bootstrap docs and put them along with bootstrap css include tag <link> and put them in <head> above title to be able to use bootstrap in layout.html and consequently in all files using it as a template
+
+* also copied the optional <script> JavaScript tags in the bootstrap docs above the closing body tag
+
+* to test that these were working we put the blocks inside a div with a container class which is a class in bootstrap that is assigned certain visual edits
