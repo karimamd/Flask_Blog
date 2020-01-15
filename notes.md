@@ -52,3 +52,11 @@ In shared files add {% extends "layout.html" %} and then define blocks with the 
 * also copied the optional <script> JavaScript tags in the bootstrap docs above the closing body tag
 
 * to test that these were working we put the blocks inside a div with a container class which is a class in bootstrap that is assigned certain visual edits
+
+* the next step would be fixing the UI using bootstrap
+for this section code snippets are copied into layout.html template inside the body tag on after the other, one is a navigation bar header and other is side probably
+tutorial does not have much details on how to do this things, only focuses on Flask
+
+* url_for flask fn is imported to get the routes for different functions
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css') }}">
+used this to link the css file to the layout file 
