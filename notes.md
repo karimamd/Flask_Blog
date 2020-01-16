@@ -59,4 +59,56 @@ tutorial does not have much details on how to do this things, only focuses on Fl
 
 * url_for flask fn is imported to get the routes for different functions
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css') }}">
-used this to link the css file to the layout file 
+used this to link the css file to the layout file
+
+* *** starting tutorial 3: registration forms
+
+* sign up and login should not be done from scratch because too complicated
+* flask wt forms is one famous lib for this
+* we put forms in separate py file for clealiness
+
+* lib has validators which put constraints
+* DataRequired constrains not having empty fields
+
+* this lib helps build forms easily without repeating validation codes
+* There is email validator to check that entered is correct email
+* and there are different types of fields corresponding to different data types and fields of a form in general
+* the string we pass to fields is the label of the field
+
+* we put a secret key in the app and that should be an env variable at some point
+* secret keys are for security protect against forgery and some other stuff
+
+* we user app.config['SECRET_KEY']=''
+and generated the key by pythons built in secrets library
+import secrets
+secrets.token_hex(16)
+
+any long string will work
+* to create the form in html template we put div tags and inside them form tags with method= post and action is empty string which means will post to the same url
+the class "content-section" given to the div is in css helps look little nicer
+
+* {{form.hidden_tag()}} important to include for security , dont worry much about details but definitly needed
+
+* can give one tag multiple classes separated by space in same quotes
+mb-4 means margin botton is 4
+
+* when need to access form variable must be in {{}}
+* can give those variables classes but opening braces and putting classes inside
+{{form.username.label(class="form-control-label")}}
+
+* we access form variables by their specified variable names in the classes in forms.py
+
+* so we created all field forms inside block that will get replaced in html
+
+* url_for function we pass name of function not name of the route
+
+* if we submit the form now we get Method not Allowed error because we did not specify that our route accept post requests
+* @app.route("/register", methods= ['GET', 'POST'])
+this solves the problem
+
+* now we need to validate fields before submission
+* there is flash in Flask which is a one time flash message
+* can specify bootstrap classes to flashes as second argument
+* there is redirect fn in flask that we can use to redirect user if data is validated correctly
+
+* must include flash in layout.html in order for it to appear and must chose its place also
